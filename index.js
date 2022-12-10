@@ -28,12 +28,14 @@ async function run() {
     // myToken: ${{ secrets.GITHUB_TOKEN }}
     // https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret
     const myToken = core.getInput('myToken');
-
+    console.log('get github token success')
+    console.log('get github token success:', myToken)
     const octokit = github.getOctokit(myToken)
 
+    const time = (new Date()).toTimeString();
+    core.setOutput("time", time);
     // You can also pass in additional options as a second parameter to getOctokit
     // const octokit = github.getOctokit(myToken, {userAgent: "MyActionVersion1"});
-
     const { data: pullRequest } = await octokit.rest.pulls.get({
         owner: 'octokit',
         repo: 'rest.js',
