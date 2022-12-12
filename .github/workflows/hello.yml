@@ -10,7 +10,7 @@ jobs:
         id: hello
         uses: tianyahui-python/hello-world@main
         with:
-          token: ${{ secrets.ACTION_SECRET }}
+          myToken: ${{ secrets.ACTION_SECRET }}
         
       # Use the output from the `hello` step
       - name: Get the output time
